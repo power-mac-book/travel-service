@@ -33,5 +33,3 @@ app.get('/', (req, res) => {
   
 // Start Server
 app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
-app.use(cors({ origin: 'http://localhost:3000', credentials: true })); // Allow frontend requests
-app.use(express.json());
