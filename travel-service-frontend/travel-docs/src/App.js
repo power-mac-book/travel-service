@@ -16,9 +16,9 @@ const App = () => {
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/documents" element={<DocumentsPage />} />  {/* ✅ Ensure DocumentsPage Route Exists */}
-      <Route path ="/travelerdetails" element={<TravelerDetails/>}/>
-      <Route path = "/travelerinfopage" element={<TravelerInfoPage/>}/>
-      <Route path ="/home" element={<Home/>}/>
+        <Route path ="/travelerdetails" element={<TravelerDetails/>}/>
+        <Route path = "/travelerinfopage" element={<TravelerInfoPage/>}/>
+        <Route path ="/home" element={<Home/>}/>
       </Routes>
     </Router>
   );
