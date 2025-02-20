@@ -1,4 +1,9 @@
 import React, { useState } from "react";
+import  Button  from "../components/ui/Button";
+import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/card";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../components/ui/select";
+import Input  from "../components/ui/input";
+import Label  from "../components/ui/Label";
 
 const DocumentsPage = () => {
   const [file, setFile] = useState(null);
@@ -14,8 +19,7 @@ const DocumentsPage = () => {
       return;
     }
 
-    const token = localStorage.getItem("token"); // 🔹 Get token
-
+    const token = localStorage.getItem("token");
     if (!token) {
       alert("User not authenticated. Please log in.");
       return;
@@ -30,12 +34,12 @@ const DocumentsPage = () => {
         method: "POST",
         body: formData,
         headers: {
-          Authorization: `Bearer ${token}`, // 🔹 Send token
+          Authorization: `Bearer ${token}`,
         },
       });
 
       const data = await response.json();
-      console.log("Response Data:", data); // 🔹 Debugging
+      console.log("Response Data:", data);
 
       if (response.ok) {
         alert("Document uploaded successfully!");
@@ -49,20 +53,32 @@ const DocumentsPage = () => {
   };
 
   return (
-    <div className="container">
-      <h1>Documents Page</h1>
+    <div className="flex items-center justify-center min-h-screen bg-gray-100 p-4">
+      <Card className="w-full max-w-md shadow-lg">
+        <CardHeader>
+          <CardTitle>Upload Document</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="space-y-4">
+            <Label>Select Document Type</Label>
+            <Select value={documentType} onValueChange={setDocumentType}>
+              <SelectTrigger>
+                <SelectValue placeholder="Select Type" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="passport">Passport</SelectItem>
+                <SelectItem value="visa">Visa</SelectItem>
+                <SelectItem value="ticket">Ticket</SelectItem>
+              </SelectContent>
+            </Select>
 
-      <label>Choose Document Type:</label>
-      <select value={documentType} onChange={(e) => setDocumentType(e.target.value)}>
-        <option value="">Select Type</option>
-        <option value="passport">Passport</option>
-        <option value="visa">Visa</option>
-        <option value="ticket">Ticket</option>
-      </select>
+            <Label>Upload File</Label>
+            <Input type="file" onChange={handleFileChange} />
 
-      <input type="file" onChange={handleFileChange} />
-
-      <button onClick={handleUpload}>Upload</button>
+            <Button onClick={handleUpload} className="w-full">Upload</Button>
+          </div>
+        </CardContent>
+      </Card>
     </div>
   );
 };

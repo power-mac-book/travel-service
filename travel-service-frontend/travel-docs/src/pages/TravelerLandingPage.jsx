@@ -16,10 +16,10 @@ const TravelerLandingPage = () => {
         </div>
       </div>
       <Link to="/signup">
-        <button>Signup</button>
+        <Button>Signup</Button>
       </Link>
       <Link to="/login">
-        <button>Login</button>
+        <Button>Login</Button>
       </Link>
       {/* Search Bar */}
       <div className="flex mt-6 bg-white p-3 rounded-lg shadow-md w-[80%] max-w-2xl">
@@ -39,9 +39,9 @@ const TravelerLandingPage = () => {
     <h1>Traveler Landing Page</h1>
     
     {/* Button to go to Documents Page */}
-    <button onClick={() => navigate("/documents")}>
+    <Button onClick={() => navigate("/documents")}>
       Go to Documents
-    </button>
+    </Button>
     </div>
 
       {/* Travel Features */}
